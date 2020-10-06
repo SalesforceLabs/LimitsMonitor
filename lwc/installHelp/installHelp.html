@@ -1,0 +1,38 @@
+<template>
+    <lightning-card  title="New Connected App">
+        <p class="slds-p-horizontal_small">1. Go to Setup > Apps > App Manager</p>
+        <p class="slds-p-horizontal_small">2. Click on New Connected App button</p>
+        <p class="slds-p-horizontal_small">3. Provide a Name, say LimMon_CApp . Add a contact email</p>
+        <p class="slds-p-horizontal_small">4. Select Enable oAuth Setting checkbox</p>
+        <p class="slds-p-horizontal_small">5. Give a Dummy URl for now. We'll update this in just a while</p>
+        <p class="slds-p-horizontal_small">8. Select the 'full' and 'refresh_token' oAuth scopes</p>
+        <p class="slds-p-horizontal_small">9. Save the Connected App</p>
+        
+    </lightning-card>
+    <lightning-card  title="New Auth Provider">
+        <p class="slds-p-horizontal_small">1. Go to Setup > Identity > Auth. Providers</p>
+        <p class="slds-p-horizontal_small">2. Click on New button</p>    
+        <p class="slds-p-horizontal_small">3. Select Salesforce</p>
+        <p class="slds-p-horizontal_small">4. Provide a Name, say LimMon_AuthProv</p>
+        <p class="slds-p-horizontal_small">5. Copy the Consumer Key and Consumer Secret from new Connected App and paste the Consumer Key and Consumer Secret</p>
+        <p class="slds-p-horizontal_small">6. Add Default Scope as 'refresh_token full'</p>
+        <p class="slds-p-horizontal_small">7. Save the Auth Provider</p>
+        <p class="slds-p-horizontal_small">8. Copy the Callback URL from the Salesforce Configuration section</p>
+    </lightning-card>
+    <lightning-card  title="Update Connected App">
+        <p class="slds-p-horizontal_small">1. Edit the Connected App, and paste the Callback URl just copied from Auth Provider</p>
+    </lightning-card>
+    <lightning-card  title="New Named Credential">
+        <p class="slds-p-horizontal_small">0. Wait for <b>10 minutes</b> for the Connected App information to flow to servers, before taking the next steps</p>
+        <p class="slds-p-horizontal_small">1. Go to Setup > Security > Named Credentials.</p>
+        <p class="slds-p-horizontal_small">2. Click New Named Credential</p>
+        <p class="slds-p-horizontal_small">3. Enter Label and Name as <b>'LimMon_NC'</b></p>
+        <p class="slds-p-horizontal_small">4. Enter the My Domain URL in URL field. Your My Domain can be found in Setup > Company Settings > My Domain</p>
+        <p class="slds-p-horizontal_small">5. Select the Identity Type as 'Named Principal'</p>
+        <p class="slds-p-horizontal_small">6. Select the Authentication Protocol as OAuth 2.0</p>
+        <p class="slds-p-horizontal_small">7. Select the Auth Provider we created in previous step</p>
+        <p class="slds-p-horizontal_small">8. Add Scope as 'refresh_token full'</p>
+        <p class="slds-p-horizontal_small">9. Select 'Start Authentication Flow on Save' and click Save</p>
+        <p class="slds-p-horizontal_small">9. Saving the Named Credential will start an Authentication Flow for this Org. Login once as a SYSTEM ADMIN</p>
+    </lightning-card>
+</template>

@@ -1,0 +1,31 @@
+<template>
+        <lightning-card title="Object Limits" icon-name="custom:custom19">
+                <div class="c-container slds-box">
+                        <lightning-layout vertical-align="end">
+                                <lightning-layout-item padding="around-x-small" size="6" class="layoutItem">
+                                    <lightning-combobox
+                                        name="progress"
+                                        value={value}
+                                        label="Select Object"
+                                        placeholder="Select Progress"
+                                        options={options}
+                                        onchange={handleChange} >
+                                    </lightning-combobox>
+                                </lightning-layout-item>
+                                <lightning-layout-item padding="around-x-small" size="6" class="layoutItem">
+                                        <lightning-button variant="success" label="Get Limits" title="Get Limits" onclick={handleBtnClick} class="slds-m-left_x-small"></lightning-button>
+                                </lightning-layout-item>
+                        </lightning-layout>
+                        
+                </div>
+                <div class="c-container slds-box">
+                        <lightning-datatable
+                        key-field="Label"
+                        data={objectLimits}
+                        columns={columns}
+                        hide-checkbox-column
+                    >
+                    </lightning-datatable>
+                </div>
+            </lightning-card>
+</template>

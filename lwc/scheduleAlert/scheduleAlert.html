@@ -1,0 +1,23 @@
+<template>
+<lightning-card title="Schedule an Alert" icon-name="custom:custom19">
+    <div class="c-container slds-box">A scheduler will be setup at the given time, and an Email will be sent to the currently logged in user, if there are any limit breaches, above the provided percent</div>
+    <div class="c-container slds-box">
+            <lightning-layout>
+                    <lightning-layout-item padding="around-x-small" size="6" class="layoutItem">
+                        <lightning-input type="time" name="timeVal" label="Enter a time" required class="timeVal"></lightning-input>   
+                    </lightning-layout-item>
+            </lightning-layout>
+            <lightning-layout>
+                    <lightning-layout-item padding="around-x-small" size="6" class="layoutItem">
+                        <lightning-input class="percentVal" type="number" required name="percentVal" max="1.0" min="0.01" label="Enter a percent (between 10 and 100)" value="0.5" formatter="percent" step="0.01"></lightning-input>
+                    </lightning-layout-item>
+            </lightning-layout>
+            <lightning-layout>
+                <lightning-layout-item padding="around-small" size="6" class="layoutItem">
+                    <lightning-button variant="success" label="Schedule" title="Schedule" onclick={handleSchedule} class="slds-m-left_x-small"></lightning-button>
+                </lightning-layout-item>
+            </lightning-layout>
+            
+        </div>
+    </lightning-card>
+</template>

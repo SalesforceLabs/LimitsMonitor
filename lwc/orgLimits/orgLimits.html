@@ -1,0 +1,149 @@
+<template>
+    
+    <lightning-card title="Org Limits" icon-name="custom:custom19">
+        <div class="c-container slds-box">
+                <lightning-layout>
+                        <lightning-layout-item padding="around-x-small" size="3" class="layoutItem">
+                                <div class="slds-m-around_x-small">
+                                    {allLimits.dailyApiLimit.label} ({allLimits.dailyApiLimit.max})
+                                </div>
+                                <div class="slds-m-around_x-small limitNo">
+                                    <svg id="apiSvg" class="d3 apiSvg" width={svgWidthSmall} height={svgHeightSmall} lwc:dom="manual"></svg>
+                                </div>
+                        </lightning-layout-item>
+                        <lightning-layout-item padding="around-x-small" size="3" class="layoutItem layoutItemWithMargin">
+                                <div class="slds-m-around_x-small">
+                                    {allLimits.dailyBulkApiLimit.label} ({allLimits.dailyBulkApiLimit.max})
+                                </div>
+                                <div class="slds-m-around_x-small limitNo">
+                                    <svg id="bulkApiSvg" class="d3 bulkApiSvg" width={svgWidthSmall} height={svgHeightSmall} lwc:dom="manual"></svg>
+                                </div>
+                        </lightning-layout-item>
+                        <lightning-layout-item padding="around-x-small" size="3" class="layoutItem">
+                                <div class="slds-m-around_x-small">
+                                    {allLimits.storageLimit.label} ({allLimits.storageLimit.max})
+                                </div>
+                                <div class="slds-m-around_x-small limitNo">
+                                    <svg id="storageSvg" class="d3 storageSvg" width={svgWidthSmall} height={svgHeightSmall} lwc:dom="manual"></svg>
+                                </div>
+                        </lightning-layout-item>
+                        <lightning-layout-item padding="around-x-small" size="3" class="layoutItem layoutItemWithMargin">
+                                <div class="slds-m-around_x-small">
+                                    {allLimits.fileStorageLimit.label} ({allLimits.fileStorageLimit.max})
+                                </div>
+                                <div class="slds-m-around_x-small limitNo">
+                                    <svg id="flStorageSvg" class="d3 flStorageSvg" width={svgWidthSmall} height={svgHeightSmall} lwc:dom="manual"></svg>
+                                </div>
+                        </lightning-layout-item>
+                </lightning-layout> 
+        </div>
+        <div class="c-container slds-box">
+            <lightning-layout>
+                <lightning-layout-item padding="around-small" size="6" class="layoutItem layoutItemWithMargin">
+                    <div class="header-column">
+                        <div class="field-title chartTitle" title="Field 1">Analytics, Reports &amp; Dashboards </div>
+                        <div class="chartTitle">
+                            
+                            <div class="slds-m-around_medium">
+                                <svg class="d3 analytics" width={svgWidth} height={svgHeight} lwc:dom="manual"></svg>
+                            </div>
+                            <lightning-accordion allow-multiple-sections-open
+                                                onsectiontoggle={handleSectionToggle}
+                                                active-section-name={activeSections}
+                                                class="accordianTitle">
+                                <lightning-accordion-section name="A" label="Tabular Details">
+                            
+                                    <lightning-datatable
+                                        key-field="name"
+                                        data={allLimits.analyticsLimits}
+                                        columns={columns}
+                                        hide-checkbox-column
+                                    >
+                                    </lightning-datatable>
+                                </lightning-accordion-section>
+                            </lightning-accordion>
+                        </div>
+                    </div>
+                </lightning-layout-item>
+                
+                <lightning-layout-item padding="around-small" size="6" class="layoutItem layoutItemWithMargin">
+                    <div class="header-column">
+                        <div class="field-title chartTitle" title="Field 1">Streaming API, Platform Events, CDC </div>
+                        <div class="chart">
+                            
+                            <div class="slds-m-around_medium">
+                                <svg class="d3 streaming" width={svgWidth} height={svgHeight} lwc:dom="manual"></svg>
+                            </div>
+                            
+                            <lightning-accordion allow-multiple-sections-open
+                                                onsectiontoggle={handleSectionToggle}
+                                                active-section-name={activeSections}
+                                                class="accordianTitle">
+                                <lightning-accordion-section name="B" label="Tabular Details">
+                                    <lightning-datatable
+                                        key-field="name"
+                                        data={allLimits.streamingLimits}
+                                        columns={columns}
+                                        hide-checkbox-column
+                                        max-column-width="100px"
+                                        min-column-width="40px">
+                                    </lightning-datatable>
+                        </lightning-accordion-section>
+                    </lightning-accordion>
+                        </div>
+                    </div>
+                </lightning-layout-item>
+
+            </lightning-layout>
+        </div>
+        <div class="c-container slds-box">
+            <lightning-layout>
+                <lightning-layout-item padding="around-small" size="6" class="layoutItem layoutItemWithMargin">
+                    <div class="header-column">
+                        <div class="chart">
+                            
+                            <lightning-accordion allow-multiple-sections-open
+                                                onsectiontoggle={handleSectionToggle}
+                                                active-section-name={activeSections}
+                                                class="accordianTitle">
+                                <lightning-accordion-section name="C" label="Workflow &amp; Email">
+                                    <lightning-datatable
+                                        key-field="name"
+                                        data={allLimits.workflowLimits}
+                                        columns={columns}
+                                        hide-checkbox-column
+                                        max-column-width="100px"
+                                        min-column-width="40px">
+                                    </lightning-datatable>
+                                </lightning-accordion-section>
+                            </lightning-accordion>
+                        </div>
+                    </div>
+                </lightning-layout-item>
+                <lightning-layout-item padding="around-small" size="6" class="layoutItem layoutItemWithMargin">
+                        <div class="header-column">
+                                <div class="chart">
+                                    
+                                    <lightning-accordion allow-multiple-sections-open
+                                                        onsectiontoggle={handleSectionToggle}
+                                                        active-section-name={activeSections}
+                                                        class="accordianTitle">
+                                        <lightning-accordion-section name="D" label="Other Limits">
+                                            <lightning-datatable
+                                                key-field="name"
+                                                data={allLimits.otherLimits}
+                                                columns={columns}
+                                                hide-checkbox-column
+                                                max-column-width="100px"
+                                                min-column-width="40px">
+                                            </lightning-datatable>
+                                        </lightning-accordion-section>
+                                    </lightning-accordion>
+                                </div>
+                            </div>
+                    </lightning-layout-item>
+            </lightning-layout>
+        </div>
+    </lightning-card>
+
+</template>

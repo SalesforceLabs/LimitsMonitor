@@ -1,0 +1,34 @@
+div.chartTitle{
+    text-align:center;
+}
+div.chart{
+    text-align: center;
+}
+table.slds-table{
+    font-size:.85em;
+}
+.layoutItem{
+    border-radius: 3px;
+    text-align:center;
+    border: 2px solid #eeeeee;
+}
+.layoutItemWithMargin{
+    margin: 0 3px;
+
+}
+.layoutItem.first{
+    background:#FEC574;
+}
+.layoutItem.second{
+    background: #eeeeee;
+}
+.accordianTitle{
+    background: #eeeeee;
+}
+.c-container.slds-box{
+    border:none;
+}
+div.limitNo{
+    font-size:28px;
+    xtext-align: right;
+}
